@@ -1,4 +1,4 @@
-;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.2 2004-09-19 21:42:21 david Exp $
+;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.3 2004-09-19 21:42:57 david Exp $
 ;;; -------=====================<<<< COPYRIGHT >>>>========================-------
 ;;;          Copyright (c) 2001 David Caldwell,  All Rights Reserved.
 ;;;  See full text of copyright notice and limitations of use in file COPYRIGHT.h
@@ -118,6 +118,9 @@ dy_0	movlw   249             ;1ms loop count on 100x series
 		movwf	i
 
 dy_1	nop                     ;Delay loop, default is 4 * 249 = 996
+		nop
+		nop
+		nop
 		decfsz  i,F
 		goto    dy_1
 
@@ -127,7 +130,10 @@ dy_1	nop                     ;Delay loop, default is 4 * 249 = 996
 		retlw   0
 
 ;; $Log: videogame-starter.asm,v $
-;; Revision 1.2  2004-09-19 21:42:21  david
+;; Revision 1.3  2004-09-19 21:42:57  david
+;; - Make the delay more accurate.
+;;
+;; Revision 1.2  2004/09/19 21:42:21  david
 ;; - This PIC only has a jump stack 2 deep!!! So make some calls into
 ;;   gotos so we don't overflow.
 ;;
