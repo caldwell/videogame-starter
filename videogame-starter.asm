@@ -1,4 +1,4 @@
-;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.3 2004-09-19 21:42:57 david Exp $
+;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.4 2004-09-19 21:44:01 david Exp $
 ;;; -------=====================<<<< COPYRIGHT >>>>========================-------
 ;;;          Copyright (c) 2001 David Caldwell,  All Rights Reserved.
 ;;;  See full text of copyright notice and limitations of use in file COPYRIGHT.h
@@ -71,6 +71,8 @@ start:
 
 		movlw	(_GPWU_OFF | _GPPU_ON | _T0CS_INTERNAL | _T0SE_LH | _PSA_Timer0 | _PS_Timer0_8)
 		option
+		;; Let the pullups settle.
+		call	delay
 
 main_loop:
 		btfss	GPIO,Player1InBit
@@ -130,7 +132,11 @@ dy_1	nop                     ;Delay loop, default is 4 * 249 = 996
 		retlw   0
 
 ;; $Log: videogame-starter.asm,v $
-;; Revision 1.3  2004-09-19 21:42:57  david
+;; Revision 1.4  2004-09-19 21:44:01  david
+;; - We have to delay before polling on the inputs because they take some
+;;   time to rise.
+;;
+;; Revision 1.3  2004/09/19 21:42:57  david
 ;; - Make the delay more accurate.
 ;;
 ;; Revision 1.2  2004/09/19 21:42:21  david
