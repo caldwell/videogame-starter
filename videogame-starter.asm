@@ -1,4 +1,4 @@
-;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.1 2004-09-19 21:37:32 david Exp $
+;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.2 2004-09-19 21:42:21 david Exp $
 ;;; -------=====================<<<< COPYRIGHT >>>>========================-------
 ;;;          Copyright (c) 2001 David Caldwell,  All Rights Reserved.
 ;;;  See full text of copyright notice and limitations of use in file COPYRIGHT.h
@@ -74,9 +74,9 @@ start:
 
 main_loop:
 		btfss	GPIO,Player1InBit
-		 call	Player1WasPressed
+		 goto	Player1WasPressed
 		btfss	GPIO,Player2InBit
-		 call	Player2WasPressed
+		 goto	Player2WasPressed
 
 		goto	main_loop
 
@@ -85,7 +85,7 @@ Player1WasPressed:
 		call	PulseOutput
 		movlw	Player1Out
 		call	PulseOutput
-		retlw	0
+		goto	main_loop
 
 Player2WasPressed:
 		movlw	CoinOut
@@ -94,7 +94,7 @@ Player2WasPressed:
 		call	PulseOutput
 		movlw	Player2Out
 		call	PulseOutput
-		retlw	0
+		goto	main_loop
 
 ;;; Pass in the bit to clear in W (as a mask, not the bit number)
 PulseOutput:
@@ -127,7 +127,11 @@ dy_1	nop                     ;Delay loop, default is 4 * 249 = 996
 		retlw   0
 
 ;; $Log: videogame-starter.asm,v $
-;; Revision 1.1  2004-09-19 21:37:32  david
-;; Initial revision
+;; Revision 1.2  2004-09-19 21:42:21  david
+;; - This PIC only has a jump stack 2 deep!!! So make some calls into
+;;   gotos so we don't overflow.
+;;
+;; Revision 1.1.1.1  2004/09/19 21:37:32  david
+;; - Initial version of the pic to control Amy's Ms. Pac-man cocktail cabinet.
 ;;
 
