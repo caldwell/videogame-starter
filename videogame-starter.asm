@@ -1,4 +1,4 @@
-;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.4 2004-09-19 21:44:01 david Exp $
+;;; $Header: /cvs/programs/videogame-starter/videogame-starter.asm,v 1.5 2004-09-19 21:44:16 david Exp $
 ;;; -------=====================<<<< COPYRIGHT >>>>========================-------
 ;;;          Copyright (c) 2001 David Caldwell,  All Rights Reserved.
 ;;;  See full text of copyright notice and limitations of use in file COPYRIGHT.h
@@ -111,7 +111,7 @@ PulseOutput:
 ;;; This will delay 250 ms
 delay:
 		movlw	D'250'
-		goto dly_ms
+		goto	dly_ms
 
 ;;; Brazely stolen from the Playstation Mod chip code:
 ;  dly_ms -- entry with number of ms in w (1 to 255)
@@ -132,7 +132,10 @@ dy_1	nop                     ;Delay loop, default is 4 * 249 = 996
 		retlw   0
 
 ;; $Log: videogame-starter.asm,v $
-;; Revision 1.4  2004-09-19 21:44:01  david
+;; Revision 1.5  2004-09-19 21:44:16  david
+;; - Whitespace.
+;;
+;; Revision 1.4  2004/09/19 21:44:01  david
 ;; - We have to delay before polling on the inputs because they take some
 ;;   time to rise.
 ;;
