@@ -16,7 +16,7 @@
 ;;;   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 
+;;;
 ;;;                           _______  _______
 ;;;                          |       \/       |
 ;;;                    Vdd --+ 1 <<      >> 8 +-- Vss
@@ -65,18 +65,18 @@ Player2In		equ	(1 << Player2InBit) ;b'00001000'
 Player1Out		equ	(1 << Player1OutBit) ;b'00000001'
 Player2Out		equ	(1 << Player2OutBit) ;b'00010000'
 CoinOut			equ	(1 << CoinOutBit) ;b'00100000'
-		
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Here are my variables:	
+;;; Here are my variables:
 		cblock  0x07
 				ms				; Used by delay routine
 				i				;  loop counter
 		endc
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; And now the program starts:	
-		org     0x00            ; Start of code space 
-start:	
+;;; And now the program starts:
+		org     0x00            ; Start of code space
+start:
 		movlw   b'11111111'     ; Set Every GPIO to tri-state
 		tris    GPIO            ;
 		clrf	GPIO			; Set the output latch to low
